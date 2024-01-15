@@ -249,12 +249,11 @@ $(document).ready(function () {
         text: '<button class="btn btn-primary btn-sm" id="AddArrear" name="AddArrear"><i class="fa fa-fw fa-plus"></i>&nbsp;Add</button>&nbsp;&nbsp;',
         action: newArrearEntryBtn,
       }); */
-      if (responsedata == "Active") {
         DtblArrear.button().add(1, {
           text: '<button class="btn btn-primary btn-sm" id="AddArrear" name="AddArrear"><i class="fa fa-fw fa-plus"></i>&nbsp;Add</button>&nbsp;&nbsp;',
           action: newArrearEntryBtn,
         });
-      }
+      
     },
   });
   GetFinancialYearArrearFilter();
@@ -269,10 +268,6 @@ $(document).ready(function () {
   //$("#txtDueBasicArrear").change(() => calcNetPay()); 
 
   $("#CmbMonthArrearFilter").selectize();
-  if (
-    user_code == ins_code + "admin001" ||
-    user_code == ins_code + "ADMIN001"
-  ) {
     var DtblArrear = $("#DtblArrear").DataTable({
       lengthMenu: [
         [7, 10, 15, 45, 75, 100],
@@ -343,69 +338,7 @@ $(document).ready(function () {
         },
       ],
     });
-  } else {
-    var DtblArrear = $("#DtblArrear").DataTable({
-      lengthMenu: [
-        [7, 10, 15, 45, 75, 100],
-        [7, 10, 15, 45, 75, 100],
-      ],
-      pageLength: 7,
-      bProcessing: false,
-      bServerSide: false,
-      bStateSave: false,
-      bPaginate: true,
-      bLengthChange: true,
-      scrollX: true,
-      bFilter: true,
-      bSort: false,
-      bInfo: true,
-      bAutoWidth: false,
-      bDestroy: false,
-      sDom: "<'row'<'col-xs-5'B><'col-xs-3'l><'col-xs-4'f>r>t<'row'<'col-xs-6' <'row' <'col-xs-6' i>>><'col-xs-6'p>>",
-      aoColumns: [
-        {
-          data: "slno",
-          sWidth: "3%",
-          bSortable: "false",
-          className: "text-center",
-        },
-        { data: "financial_year", className: "text-center", sWidth: "5%" },
-        { data: "month", className: "text-center", sWidth: "5%" },
-        { data: "emp_name", className: "text-left", sWidth: "10%" },
-        { data: "arrear_type_name", className: "text-left", sWidth: "10%" },
-        { data: "due_basic", className: "text-right", sWidth: "7%" },
-        { data: "due_da", className: "text-right", sWidth: "7%" },
-        { data: "due_hra", className: "text-right", sWidth: "7%" },
-        { data: "total1", className: "text-right", sWidth: "7%" },
-        { data: "drawn_basic", className: "text-right", sWidth: "7%" },
-        { data: "drawn_da", className: "text-right", sWidth: "7%" },
-        { data: "drawn_hra", className: "text-right", sWidth: "7%" },
-        { data: "total2", className: "text-right", sWidth: "7%" },
-        { data: "it", className: "text-right", sWidth: "7%" },
-        { data: "pt", className: "text-right", sWidth: "7%" },
-        { data: "epf", className: "text-right", sWidth: "7%" },
-        { data: "nps", className: "text-right", sWidth: "7%" },
-        { data: "misc_ded", className: "text-right", sWidth: "7%" },
-        { data: "total3", className: "text-right", sWidth: "7%" },
-        { data: "net", className: "text-right", sWidth: "7%" },
-        { data: "remarks", className: "text-center", sWidth: "7%" },
-      ],
-      buttons: [
-        {
-          extend: "excelHtml5",
-          text: '<button class="btn btn-success btn-sm "><i class="fa fa-download"></i>&nbsp;Excel</button>',
-          filename: "Arrear Details",
-          header: true,
-          title: "Arrear Details",
-          exportOptions: {
-            columns: [
-              0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
-            ],
-          },
-        },
-      ],
-    });
-  }
+   
   $("#FrmArrear").bootstrapValidator({
     excluded: "disabled",
     message: "This value is not valid",
